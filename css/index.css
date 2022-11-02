@@ -1,0 +1,41 @@
+.search-container {
+    position: relative;
+}
+.search-container__head {
+
+}
+.search-container__warning {
+    color: red;
+    max-height: 0;
+    opacity: 0;
+    transition: .3s ease-in-out;
+}
+.search-container__warning.active {
+    max-height: 40px;
+    opacity: 1;
+    position: absolute;
+    bottom: -100%;
+}
+
+.container {
+    gap: 24px;
+}
+.container__element {
+    max-width: 300px;
+    min-width: 300px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.container__element.input-checked {
+    background: #5f2a3b;
+    color: white;
+}
+.container__title,.container__body {
+    text-transform: lowercase;
+}
+.container__body {
+
+}
+
