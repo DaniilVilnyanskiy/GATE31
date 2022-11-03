@@ -27,8 +27,6 @@ window.onload = function(){
      */
     function changeGetParametr(inputValue, reset) {
         if (reset) {
-
-            console.log(window.location.search);
             window.location.search = '';
             return;
         }
@@ -109,7 +107,6 @@ window.onload = function(){
             warning.innerHTML = 'Введите буквы';
             input.value = '';
         } else {
-            console.log(inputValue);
             changeGetParametr(inputValue)
             getParametr()
         }
