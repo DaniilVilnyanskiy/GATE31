@@ -27,8 +27,20 @@ window.onload = function(){
      */
     function changeGetParametr(inputValue, reset) {
         if (reset) {
+
+            console.log(window.location.search);
             window.location.search = '';
             return;
+        }
+
+        // TODO: здесь нужно дописать хранение других гет параметров, сейчас всё сбрасывается
+        //- без перезагрузки
+        var param1 = '?value=' + inputValue;
+        if (window.location.search === '') {
+            history.pushState(null, null, param1);
+        }
+        if (window.location.search) {
+            history.pushState(null, null, param1);
         }
 
         //- с перезагрузкой
@@ -42,14 +54,6 @@ window.onload = function(){
         //- if (window.location.search == '?value=' + key) {
         //-     window.location.href += param2;
         //- }
-
-        //- без перезагрузки
-
-        var param1 = '?value=' + inputValue;
-        if (window.location.search) {
-            history.pushState(null, null, param1);
-        }
-
     }
 
     /**
@@ -105,16 +109,24 @@ window.onload = function(){
             warning.innerHTML = 'Введите буквы';
             input.value = '';
         } else {
+            console.log(inputValue);
             changeGetParametr(inputValue)
             getParametr()
         }
     }
 
+    /**
+     * Добавление/удаление активного класса для элементов
+     * @param e
+     */
     function toggleClassColor(e) {
         const parentElement = e.target.closest('.container__element');
         parentElement.classList.toggle('input-checked');
     }
 
+    /**
+     * Событие изменение чекбокса
+     */
     function handlerCheckbox() {
         const checkbox = container.querySelectorAll('input[type="checkbox"]');
         checkbox.forEach((item) => {
@@ -122,6 +134,10 @@ window.onload = function(){
         })
     }
 
+    /**
+     * Рендер
+     * @param data
+     */
     function createElements(data) {
         data.forEach((obj) => {
             container.insertAdjacentHTML('beforeend',createContainerElements(obj.title, obj.body))
